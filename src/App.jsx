@@ -46,10 +46,8 @@ function AppContent() {
     if (tab === 'safe_report') return <SafeReport />;
     if (tab === 'calendar')    return <CalendarSync />;
     if (tab === 'music')       return <MusicHub />;
-
     switch (role) {
-      case 'head_coach':
-      case 'asst_coach':
+      case 'head_coach': case 'asst_coach':
         if (tab === 'lines')   return <LineBuilder />;
         if (tab === 'roster')  return <Roster />;
         if (tab === 'gameday') return <GameDay />;
@@ -63,8 +61,7 @@ function AppContent() {
         return <PlayerHome />;
       case 'org_admin':
         return <OrgDashboard />;
-      default:
-        return <CoachCorner />;
+      default: return <CoachCorner />;
     }
   };
 
@@ -75,28 +72,25 @@ function AppContent() {
       <Nav activeTab={tab} setActiveTab={setTab} />
       <PARAOverlay />
 
-      {/* Global safe report access - bottom left FAB */}
-      <button
-        onClick={() => setTab('safe_report')}
-        title="Safe Report"
+      {/* Safe Report - always accessible, bottom left */}
+      <button onClick={() => setTab('safe_report')} title="Safe Report"
         style={{
-          position: 'fixed', bottom: 90, left: 16,
-          width: 40, height: 40, borderRadius: '50%',
-          background: 'var(--danger-dim)', border: '1px solid var(--danger)40',
-          fontSize: 16, cursor: 'pointer', zIndex: 99,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          position:'fixed', bottom:90, left:16,
+          width:40, height:40, borderRadius:'50%',
+          background:'var(--danger-dim)', border:'1px solid var(--danger)50',
+          fontSize:16, cursor:'pointer', zIndex:99,
+          display:'flex', alignItems:'center', justifyContent:'center',
+          boxShadow:'0 2px 10px rgba(160,54,78,0.3)',
         }}>🛡️</button>
 
-      {/* Calendar sync access */}
-      <button
-        onClick={() => setTab('calendar')}
-        title="Calendar Sync"
+      {/* Calendar - always accessible */}
+      <button onClick={() => setTab('calendar')} title="Calendar Sync"
         style={{
-          position: 'fixed', bottom: 140, left: 16,
-          width: 40, height: 40, borderRadius: '50%',
-          background: 'var(--surface2)', border: '1px solid var(--border)',
-          fontSize: 16, cursor: 'pointer', zIndex: 99,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          position:'fixed', bottom:138, left:16,
+          width:40, height:40, borderRadius:'50%',
+          background:'var(--surface2)', border:'1px solid var(--border)',
+          fontSize:16, cursor:'pointer', zIndex:99,
+          display:'flex', alignItems:'center', justifyContent:'center',
         }}>📅</button>
     </div>
   );
