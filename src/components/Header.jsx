@@ -24,8 +24,8 @@ export default function Header({ title, onRoleChange }) {
         zIndex: 100, maxWidth: 430, margin: '0 auto',
       }}>
         <div>
-          <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 22, color: 'var(--primary)', letterSpacing: 3, lineHeight: 1 }}>
-            NOMOS
+          <div style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif", fontSize: 26, color: 'var(--primary)', letterSpacing: 6, lineHeight: 1, fontWeight: 300, fontStyle: 'italic' }}>
+            nomos
           </div>
           <div style={{ fontSize: 10, color: 'var(--muted)', marginTop: 1 }}>{TEAM.name}</div>
         </div>
