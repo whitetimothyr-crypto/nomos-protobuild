@@ -16,6 +16,7 @@ import OrgDashboard from './views/OrgDashboard';
 import SafeReport from './views/SafeReport';
 import CalendarSync from './views/CalendarSync';
 import MusicHub from './views/MusicHub';
+import FeatureMap from './views/FeatureMap';
 
 const ROLE_DEFAULTS = {
   head_coach: 'corner', asst_coach: 'corner',
@@ -46,6 +47,7 @@ function AppContent() {
     if (tab === 'safe_report') return <SafeReport />;
     if (tab === 'calendar')    return <CalendarSync />;
     if (tab === 'music')       return <MusicHub />;
+    if (tab === 'features')    return <FeatureMap />;
     switch (role) {
       case 'head_coach': case 'asst_coach':
         if (tab === 'lines')   return <LineBuilder />;
@@ -82,6 +84,16 @@ function AppContent() {
           display:'flex', alignItems:'center', justifyContent:'center',
           boxShadow:'0 2px 10px rgba(160,54,78,0.3)',
         }}>🛡️</button>
+
+      {/* Features map - always accessible */}
+      <button onClick={() => setTab('features')} title="Feature Map"
+        style={{
+          position:'fixed', bottom:186, left:16,
+          width:40, height:40, borderRadius:'50%',
+          background:'var(--surface2)', border:'1px solid var(--border)',
+          fontSize:14, cursor:'pointer', zIndex:99,
+          display:'flex', alignItems:'center', justifyContent:'center',
+        }}>🗺️</button>
 
       {/* Calendar - always accessible */}
       <button onClick={() => setTab('calendar')} title="Calendar Sync"
