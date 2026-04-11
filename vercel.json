@@ -1,4 +1,7 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
-  "public": true
+    "rewrites": [
+          { "source": "/story", "destination": "/public/story.html" },
+          { "source": "/(.*)", "destination": "/index.html" }
+    ],
+    "public": true
 }
