@@ -9,69 +9,69 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#080810;--surface:#0c0c14;--border:#1a1a2e;--text:#E8E8E0;--muted:#666680;--muted2:#888899;--primary:#3AAEAC;--purple:#C08CFF;--gold:#C9A84C; }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden}
-  .ambient{position:fixed;inset:0;pointer-events:none;z-index:0}
-  .ambient::before{content:'';position:absolute;top:-10%;left:-10%;width:50%;height:50%;background:radial-gradient(ellipse,rgba(58,174,172,0.05) 0%,transparent 70%)}
-  .ambient::after{content:'';position:absolute;bottom:10%;right:-5%;width:45%;height:45%;background:radial-gradient(ellipse,rgba(192,140,255,0.04) 0%,transparent 70%)}
-  .top-rule{position:fixed;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--primary) 40%,var(--purple) 60%,transparent 100%);opacity:0.4;z-index:10}
-  nav{position:fixed;top:0;left:0;right:0;z-index:20;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(8,8,16,0.95) 0%,transparent 100%)}
-  .nav-wordmark{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:22px;letter-spacing:0.1em;color:var(--text);text-decoration:none}
-  .nav-link{font-size:11px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
-  .nav-link:hover{color:var(--primary)}
-  main{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:140px 2rem 100px}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-  .fade{opacity:0;animation:fadeUp 0.8s ease forwards}
-  .hero{margin-bottom:72px}
-  .eyebrow{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--primary);margin-bottom:1.5rem}
-  .hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(40px,7vw,68px);line-height:1.1;color:var(--text);margin-bottom:1.5rem}
-  .hero-title em{color:var(--primary);font-style:italic}
-  .hero-lead{font-size:17px;font-weight:300;line-height:1.85;color:var(--muted2)}
-  .founder-block{display:flex;gap:24px;align-items:flex-start;margin-bottom:72px;padding:32px;background:var(--surface);border:0.5px solid var(--border);border-radius:16px}
-  .founder-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--border)}
-  .founder-name{font-size:16px;font-weight:500;color:var(--text);margin-bottom:2px}
-  .founder-title-sub{font-size:12px;color:var(--muted);letter-spacing:0.06em;margin-bottom:10px}
-  .founder-bio{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted2)}
-  .story-block{margin-bottom:72px}
-  .section-label{font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--primary);margin-bottom:0.875rem}
-  .section-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(26px,4vw,36px);color:var(--text);margin-bottom:1.25rem;line-height:1.2}
-  .section-body{font-size:16px;font-weight:300;line-height:1.9;color:var(--muted2)}
-  .section-body+.section-body{margin-top:1rem}
-  .section-body em{color:var(--text);font-style:italic}
-  .section-body strong{color:var(--text);font-weight:400}
-  .pull-quote{margin:36px 0;padding:28px 32px;border-left:2px solid var(--primary);background:rgba(58,174,172,0.04);border-radius:0 8px 8px 0}
-  .pull-quote p{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(18px,3vw,24px);line-height:1.65;color:var(--text)}
-  .section-rule{display:flex;align-items:center;gap:16px;margin:72px 0 56px}
-  .section-rule-line{flex:1;height:1px;background:var(--border)}
-  .section-rule-label{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-  .photo-wrap{margin:0 0 72px;border-radius:12px;overflow:hidden;border:0.5px solid var(--border)}
-  .photo-wrap img{width:100%;display:block}
-  .photo-caption{padding:12px 16px;font-size:11px;color:var(--muted);letter-spacing:0.08em;text-align:center;background:var(--surface)}
-  .para-callout{margin:36px 0;padding:28px 32px;background:var(--surface);border:0.5px solid var(--border);border-radius:12px}
-  .para-callout-label{font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--purple);margin-bottom:0.75rem}
-  .para-callout-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--text);margin-bottom:0.75rem}
-  .para-callout-body{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted2)}
-  .para-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
-  .para-pill{padding:12px 16px;background:rgba(192,140,255,0.06);border:0.5px solid rgba(192,140,255,0.15);border-radius:8px}
-  .para-pill-word{font-size:12px;font-weight:500;color:var(--purple);letter-spacing:0.08em;margin-bottom:3px}
-  .para-pill-def{font-size:12px;font-weight:300;color:var(--muted);line-height:1.5}
-  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0}
-  .stat-card{padding:20px 24px;background:var(--surface);border:0.5px solid var(--border);border-radius:12px}
-  .stat-num{font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--primary);margin-bottom:8px}
-  .stat-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--text);margin-bottom:6px}
-  .stat-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.6}
-  .cta-block{margin-top:80px;padding:48px;background:var(--surface);border:0.5px solid var(--border);border-radius:16px;text-align:center}
-  .cta-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:28px;color:var(--text);margin-bottom:0.75rem}
-  .cta-sub{font-size:13px;font-weight:300;color:var(--muted);margin-bottom:1.5rem;letter-spacing:0.04em}
-  .cta-email{display:inline-block;font-size:13px;color:var(--primary);text-decoration:none;letter-spacing:0.08em;border-bottom:1px solid rgba(58,174,172,0.3);padding-bottom:2px;transition:border-color 0.2s}
-  .cta-email:hover{border-color:var(--primary)}
-  footer{position:relative;z-index:1;text-align:center;padding:40px 2rem;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:80px}
-  footer a{color:var(--muted);text-decoration:none}
-  footer a:hover{color:var(--primary)}
-  .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}.d8{animation-delay:.8s}.d9{animation-delay:.9s}.d10{animation-delay:1s}.d11{animation-delay:1.1s}
-  @media(max-width:600px){nav{padding:16px 20px}main{padding:120px 1.25rem 60px}.founder-block{flex-direction:column}.stats-grid{grid-template-columns:1fr}.para-pillars{grid-template-columns:1fr}.cta-block{padding:32px 24px}}
+:root { --bg:#080810;--surface:#0c0c14;--border:#1a1a2e;--text:#E8E8E0;--muted:#666680;--muted2:#888899;--primary:#3AAEAC;--purple:#C08CFF;--gold:#C9A84C; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden}
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:0}
+.ambient::before{content:'';position:absolute;top:-10%;left:-10%;width:50%;height:50%;background:radial-gradient(ellipse,rgba(58,174,172,0.05) 0%,transparent 70%)}
+.ambient::after{content:'';position:absolute;bottom:10%;right:-5%;width:45%;height:45%;background:radial-gradient(ellipse,rgba(192,140,255,0.04) 0%,transparent 70%)}
+.top-rule{position:fixed;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--primary) 40%,var(--purple) 60%,transparent 100%);opacity:0.4;z-index:10}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(8,8,16,0.95) 0%,transparent 100%)}
+.nav-wordmark{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:22px;letter-spacing:0.1em;color:var(--text);text-decoration:none}
+.nav-link{font-size:11px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--primary)}
+main{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:140px 2rem 100px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade{opacity:0;animation:fadeUp 0.8s ease forwards}
+.hero{margin-bottom:72px}
+.eyebrow{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--primary);margin-bottom:1.5rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(40px,7vw,68px);line-height:1.1;color:var(--text);margin-bottom:1.5rem}
+.hero-title em{color:var(--primary);font-style:italic}
+.hero-lead{font-size:17px;font-weight:300;line-height:1.85;color:var(--muted2)}
+.founder-block{display:flex;gap:24px;align-items:flex-start;margin-bottom:72px;padding:32px;background:var(--surface);border:0.5px solid var(--border);border-radius:16px}
+.founder-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--border)}
+.founder-name{font-size:16px;font-weight:500;color:var(--text);margin-bottom:2px}
+.founder-title-sub{font-size:12px;color:var(--muted);letter-spacing:0.06em;margin-bottom:10px}
+.founder-bio{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted2)}
+.story-block{margin-bottom:72px}
+.section-label{font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--primary);margin-bottom:0.875rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(26px,4vw,36px);color:var(--text);margin-bottom:1.25rem;line-height:1.2}
+.section-body{font-size:16px;font-weight:300;line-height:1.9;color:var(--muted2)}
+.section-body+.section-body{margin-top:1rem}
+.section-body em{color:var(--text);font-style:italic}
+.section-body strong{color:var(--text);font-weight:400}
+.pull-quote{margin:36px 0;padding:28px 32px;border-left:2px solid var(--primary);background:rgba(58,174,172,0.04);border-radius:0 8px 8px 0}
+.pull-quote p{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(18px,3vw,24px);line-height:1.65;color:var(--text)}
+.section-rule{display:flex;align-items:center;gap:16px;margin:72px 0 56px}
+.section-rule-line{flex:1;height:1px;background:var(--border)}
+.section-rule-label{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.photo-wrap{margin:0 0 72px;border-radius:12px;overflow:hidden;border:0.5px solid var(--border)}
+.photo-wrap img{width:100%;display:block}
+.photo-caption{padding:12px 16px;font-size:11px;color:var(--muted);letter-spacing:0.08em;text-align:center;background:var(--surface)}
+.para-callout{margin:36px 0;padding:28px 32px;background:var(--surface);border:0.5px solid var(--border);border-radius:12px}
+.para-callout-label{font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--purple);margin-bottom:0.75rem}
+.para-callout-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--text);margin-bottom:0.75rem}
+.para-callout-body{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted2)}
+.para-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.para-pill{padding:12px 16px;background:rgba(192,140,255,0.06);border:0.5px solid rgba(192,140,255,0.15);border-radius:8px}
+.para-pill-word{font-size:12px;font-weight:500;color:var(--purple);letter-spacing:0.08em;margin-bottom:3px}
+.para-pill-def{font-size:12px;font-weight:300;color:var(--muted);line-height:1.5}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0}
+.stat-card{padding:20px 24px;background:var(--surface);border:0.5px solid var(--border);border-radius:12px}
+.stat-num{font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--primary);margin-bottom:8px}
+.stat-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--text);margin-bottom:6px}
+.stat-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.6}
+.cta-block{margin-top:80px;padding:48px;background:var(--surface);border:0.5px solid var(--border);border-radius:16px;text-align:center}
+.cta-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:28px;color:var(--text);margin-bottom:0.75rem}
+.cta-sub{font-size:13px;font-weight:300;color:var(--muted);margin-bottom:1.5rem;letter-spacing:0.04em}
+.cta-email{display:inline-block;font-size:13px;color:var(--primary);text-decoration:none;letter-spacing:0.08em;border-bottom:1px solid rgba(58,174,172,0.3);padding-bottom:2px;transition:border-color 0.2s}
+.cta-email:hover{border-color:var(--primary)}
+footer{position:relative;z-index:1;text-align:center;padding:40px 2rem;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:80px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--primary)}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}.d8{animation-delay:.8s}.d9{animation-delay:.9s}.d10{animation-delay:1s}.d11{animation-delay:1.1s}
+@media(max-width:600px){nav{padding:16px 20px}main{padding:120px 1.25rem 60px}.founder-block{flex-direction:column}.stats-grid{grid-template-columns:1fr}.para-pillars{grid-template-columns:1fr}.cta-block{padding:32px 24px}}
 </style>
 </head>
 <body>
@@ -79,15 +79,32 @@
 <div class="top-rule"></div>
 <nav>
   <a href="/" class="nav-wordmark">nomos</a>
-  <a href="mailto:hq@nomosschema.com" class="nav-link">Contact</a>
+  <a href="mailto:tim@nomosschema.com" class="nav-link">Contact</a>
 </nav>
 <main>
   <div class="hero">
     <div class="eyebrow fade d1">Our Story</div>
     <h1 class="hero-title fade d2">Built from behind<br>the bench.<br><em>Designed for everyone</em><br>on it.</h1>
-    <p class="hero-lead fade d3">For years, the search for a tool that actually ran youth sports kept coming up empty. Every season, a new app. Every app solving one thing while breaking three others. The same problems, with different names on them.</p>
+    <p class="hero-lead fade d3">For years, the search for a tool to functionally manage the logistics of youth sports kept coming up empty. Every season, the same apps. Always waiting for a better solution. Or for someone to pay attention to what's missing, not just what's broken.</p>
   </div>
-  <div class="founder-block fade d4">
+
+  <div class="photo-wrap fade d4">
+    <img src="/bench-photo.jpg" alt="Tim White behind the bench"/>
+    <div class="photo-caption">Behind the bench &mdash; where nomos was conceived</div>
+  </div>
+
+  <div class="story-block fade d5">
+    <div class="section-label">The Origin</div>
+    <h2 class="section-title">It started with a lineup.</h2>
+    <p class="section-body">Communicating lineups with the coaching staff before a game. An easy dialog. feedback. adjustments. No one was on the same schedule. Never the same format twice. The solution was a simple lineup sharing app. It worked, but sat unused, never even tested. It was obsolete before it ever saw a user.</p>
+    <p class="section-body"><em>What if it could? What if it was?</em> Every challenge faced personally. Every frustration remembered. Every conversation in every rink.</p>
+    <div class="pull-quote">
+      <p>"In all of the rinks I've ever been in. From all of the roles I've ever been in. Something was always missing. I knew it, we all know it. I just couldn't see it."</p>
+    </div>
+    <p class="section-body">Coaches exist for their players. Everything else is infrastructure.</p>
+  </div>
+
+  <div class="founder-block fade d6">
     <img src="/headshot.jpg" alt="Tim White, Founder" class="founder-photo"/>
     <div>
       <div class="founder-name">Tim White</div>
@@ -95,38 +112,27 @@
       <div class="founder-bio">Head Coach, Biggby Coffee 14U AA (MGHL) and PCS Girls Varsity. 20+ years in B2B sales leadership. 15 years as a DJ. nomos is what happens when pattern recognition has nowhere left to go.</div>
     </div>
   </div>
-  <div class="story-block fade d5">
-    <div class="section-label">The Origin</div>
-    <h2 class="section-title">It started with a lineup.</h2>
-    <p class="section-body">Communicating lines to the coaching staff before a game. Getting feedback. Making adjustments. Never enough time. Never the same format. So an app got built from nothing to solve it. It worked. It was never used. Because before it was done, it was already obsolete in its own creator's mind.</p>
-    <p class="section-body"><em>What if it could? What if it was?</em> Every challenge faced personally. Every frustration remembered. Every conversation in every rink.</p>
-    <div class="pull-quote">
-      <p>"In all of the rinks I've ever been in. From all of the roles I've ever been in. Something was always missing. I knew it, we all know it. I just couldn't see it yet."</p>
-    </div>
-    <p class="section-body">Coaches exist for their players. Everything else is infrastructure.</p>
-  </div>
-  <div class="photo-wrap fade d6">
-    <img src="/bench-photo.jpg" alt="Tim White behind the bench"/>
-    <div class="photo-caption">Behind the bench &mdash; where nomos was conceived</div>
-  </div>
+
   <div class="story-block fade d7">
     <div class="section-label">The Problem</div>
     <h2 class="section-title">Same problems. Bolted-on solutions. Every season.</h2>
-    <p class="section-body">Coaches juggle scheduling apps, group texts, spreadsheets, Venmo chains, and email threads. Parents miss game times. Players fall through cracks. Organizations have no visibility into any of it.</p>
+    <p class="section-body">Coaches, orgs, and parents juggle scheduling apps, group texts, spreadsheets, Venmo chains, and email threads. Parents miss game times. Players fall through cracks. Organizations have no visibility into any of it.</p>
     <p class="section-body">The tools that exist were built for one job. Registration. Scores. Video. Payments. None of them were built for the whole ecosystem.</p>
     <div class="pull-quote">
       <p>"Teamworks built the operating system for professional sports at a $1.3 billion valuation. Nobody built it for the other 57 million. That's what nomos is."</p>
     </div>
   </div>
+
   <div class="section-rule fade d8">
     <div class="section-rule-line"></div>
     <div class="section-rule-label">Three roots</div>
     <div class="section-rule-line"></div>
   </div>
+
   <div class="story-block fade d8">
     <div class="section-label">Root One</div>
     <h2 class="section-title">The educator who never let a kid fall through the cracks.</h2>
-    <p class="section-body">Tim's mother was a para-educator. She dedicated her life to making sure no child was invisible. T-Cell Lymphoma forced her out of the classroom before she was ready to leave. She eventually lost that battle. But her initials &mdash; <strong>E.M.W.</strong> &mdash; are permanent in the platform. <em>Every Moment Witnessed.</em> The parent highlight reel. Every goal, every milestone, every evaluation. The things she would have wanted to see.</p>
+    <p class="section-body">Tim's mother was a para-educator. She dedicated her life to making sure no child was invisible. Lymphoma forced her out of the classroom before she was ready to leave, a battle that would eventually take her life. But her initials &mdash; <strong>E.M.W.</strong> &mdash; are permanent in the platform. <em>Every Moment Witnessed.</em> The parent highlight reel. Every goal, every milestone, every evaluation. The things she would have wanted to see.</p>
     <div class="para-callout">
       <div class="para-callout-label">The Intelligence Layer</div>
       <div class="para-callout-title">PARA &mdash; named for those who walk alongside.</div>
@@ -139,12 +145,14 @@
       </div>
     </div>
   </div>
+
   <div class="story-block fade d9">
     <div class="section-label">Root Two</div>
     <h2 class="section-title">The designer who meets people where they are.</h2>
     <p class="section-body">Tim's wife holds a Master's in Instructional Design with an ESL focus. Instructional design is the science of meeting learners where they are, not where you want them to be. ESL adds another layer: designing for people who don't yet speak your language.</p>
     <p class="section-body">That principle runs through every pixel of nomos. The onboarding flow that gets a parent to value in under 90 seconds. The evaluation system that walks coaches through one category at a time. The age-appropriate depth that gives 8U teams five fun categories instead of twenty technical ones. <em>None of that is UX guesswork. That is instructional design.</em></p>
   </div>
+
   <div class="story-block fade d10">
     <div class="section-label">Root Three</div>
     <h2 class="section-title">The DJ who reads the room.</h2>
@@ -152,34 +160,38 @@
     <p class="section-body">For Tim, ADHD means the pattern recognition never stops. Synesthesia means sound has always moved as geometry &mdash; interconnected, kinetic, spatial. Not quirks. Not footnotes. Together they are the natural order of how the world has always arrived: in signals, in connections, in the moment the energy starts to drop before anyone else in the room notices it.</p>
     <p class="section-body">The STEMS diagnostic architecture is music language made literal. In audio production, stems are isolated tracks &mdash; vocals, drums, bass, melody. Isolated, each one is incomplete. Combined, they become a unified mix. In nomos, <strong>S.T.E.M.S.</strong> measures Sentiment, Tempo, Engagement, Momentum, and Synergy across every stakeholder. <em>Sync them, and the noise becomes signal.</em></p>
   </div>
+
   <div class="section-rule fade d10">
     <div class="section-rule-line"></div>
     <div class="section-rule-label">The platform</div>
     <div class="section-rule-line"></div>
   </div>
+
   <div class="story-block fade d11">
     <div class="section-label">Where it stands</div>
     <h2 class="section-title">One prototype. One alpha. A pipeline already forming.</h2>
     <p class="section-body">nomos is pre-launch and hockey-first by design. The pilot team is the coach's own. One functional prototype in active alpha testing this spring. Two teams committed for beta. One organization positioned for adoption pending beta execution.</p>
     <p class="section-body">Behind that: 21 modules specced across 8 development phases, 70+ specification files, and a complete engineering architecture. This is not a concept deck. It is a product with a roadmap, a methodology, skin in the game, and a market strategy built on 20 years of B2B sales experience.</p>
   </div>
+
   <div class="stats-grid fade d11">
     <div class="stat-card"><div class="stat-num">Alpha &rarr; Beta &rarr; Org</div><div class="stat-name">Real pipeline</div><div class="stat-desc">One team in alpha now. Two committed for beta. One org positioned for adoption pending beta execution.</div></div>
     <div class="stat-card"><div class="stat-num">21 modules / 8 phases</div><div class="stat-name">Full roadmap</div><div class="stat-desc">70+ specification files. A complete engineering architecture. Built to scale beyond hockey from day one.</div></div>
     <div class="stat-card"><div class="stat-num">$54B market</div><div class="stat-name">57M users</div><div class="stat-desc">Youth sports software is a $2.7B layer growing at 12% annually. No OS player exists.</div></div>
     <div class="stat-card"><div class="stat-num">PARA</div><div class="stat-name">AI intelligence</div><div class="stat-desc">Protect. Advise. Respond. Advance. Walks alongside every stakeholder, never in front.</div></div>
   </div>
+
   <div class="cta-block fade d11">
     <div class="cta-title">Want to know more?</div>
     <div class="cta-sub">Partnership, investment, and early access inquiries welcome.</div>
-    <a href="mailto:hq@nomosschema.com" class="cta-email">hq@nomosschema.com</a>
+    <a href="mailto:tim@nomosschema.com" class="cta-email">tim@nomosschema.com</a>
   </div>
 </main>
 <footer>
   <span>&copy; 2026 nomos schema &nbsp;&middot;&nbsp;</span>
   <a href="/">Home</a>
   <span> &nbsp;&middot;&nbsp; </span>
-  <a href="mailto:hq@nomosschema.com">Contact</a>
+  <a href="mailto:tim@nomosschema.com">Contact</a>
 </footer>
 </body>
 </html>
