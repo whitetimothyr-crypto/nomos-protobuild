@@ -1,7 +1,8 @@
 {
-      "rewrites": [
-              { "source": "/story", "destination": "/story.html" },
-              { "source": "/(.*)", "destination": "/index.html" }
-      ],
-      "public": true
+  "rewrites": [
+    { "source": "/story", "destination": "/story.html" },
+    { "source": "/assessment", "destination": "/assessment.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "public": true
 }
